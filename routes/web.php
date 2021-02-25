@@ -16,3 +16,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Route::get('/notas', [App\Http\Controllers\NotaController::class, 'index'])->name('home');
+
+Route::resource('/notas', 'App\Http\Controllers\NotaController')->middleware('auth');
+
+/*
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+*/

@@ -1,0 +1,36 @@
+* Instalacion y Configuracion Vue.js en Laravel.
+
+- Una vez se tenga el proyecto de Laravel creado, se instala Vue.js con Bootstrap de la siguiente manera:
+
+$ php artisan ui bootstrap
+$ php artisan ui vue
+$ php artisan ui react			--> Si se requiere "react"
+
+- Si se quiere con UI AUTH:
+
+$ php artisan ui bootstrap --auth
+$ php artisan ui vue --auth
+$ php artisan ui react --auth		--> Si se requiere "react"
+
+- Se debe compilar (esto se hace 2 veces):
+
+$ npm install && npm run dev
+
+Para que los componentes se compilen (archivos "resources/js/components/ExampleComponent.vue"), después de correr el servidor Laravel con "php artisan serve", se debe correr en otra terminal lo siguiente:
+
+$ npm run watch
+
+- Ahora cada vez que se modifique un componente, esto lo compilará, y el sistema lanzará una notificación de Build ó Compiled Successful. Si no se quiere que se lance esta notificación se debe poner la siguiente línea al final del archivo "webpack.mix.js":
+
+mix.disableNotifications();
+
+Se reinicia el servidor ("php artisan serve" y "npm run watch"). Para que ya no se lance la notificación.
+
+
+* Cada componente nuevo que se cree en "resources/js/components" debe ser declarado en "resources/js/app.js", de esta forma:
+
+Vue.component('<cualquier_nombre>', require('./components/<nombre_del_archivo.vue>').default);
+
+
+
+
