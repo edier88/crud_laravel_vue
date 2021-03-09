@@ -18,7 +18,7 @@ class NotaController extends Controller
         //return Nota::where('user_id', auth()->id())->get();
         
         if($request->ajax()){
-            return Nota::where('user_id', auth()->id())->get();
+            return Nota::where('user_id', auth()->id())->get(); // El ID del usuario autenticado
         } else{
             return view('home');
         }
